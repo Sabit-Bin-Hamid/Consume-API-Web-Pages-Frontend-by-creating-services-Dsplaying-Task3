@@ -102,7 +102,7 @@ namespace ConsumesStudentAPI.Controllers
 
         }
 
-        
+
         public IActionResult Delete(Guid id)
         {
             try
@@ -116,10 +116,10 @@ namespace ConsumesStudentAPI.Controllers
                     return RedirectToAction("Index");
                 }
                 return RedirectToAction("Index");
-            }catch(Exception ex)
-            {
-                throw ex;
+
             }
+
+            catch (Exception ex) { throw ex; }
         }
     }
 }
