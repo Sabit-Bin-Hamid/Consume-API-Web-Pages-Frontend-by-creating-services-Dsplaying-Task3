@@ -81,6 +81,7 @@ namespace ConsumesStudentAPI.Controllers
 
         }
 
+
         [HttpPost]
         public IActionResult Edit(UserViewModel model)
         {
@@ -91,6 +92,7 @@ namespace ConsumesStudentAPI.Controllers
                 HttpResponseMessage response = client.PutAsync(client.BaseAddress + "/User/" + model.Id,content).Result;
                 if (response.IsSuccessStatusCode)
                 {
+
                     return RedirectToAction("Index");
 
                 }
@@ -98,6 +100,20 @@ namespace ConsumesStudentAPI.Controllers
             }
             catch (Exception ex) { throw ex; }
 
+        }
+
+        
+        public IActionResult Delete(Guid id)
+        {
+            //HTTP DELETE
+            var deleteTask = client.DeleteAsync(client.BaseAddress+"/User/"+id);
+            deleteTask.Wait();
+            var response=deleteTask.Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

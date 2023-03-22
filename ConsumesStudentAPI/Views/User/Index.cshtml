@@ -48,33 +48,38 @@
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
             
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserFirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
             
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) |
-                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
-            </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id}) |
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
+                    @*@using (Html.BeginForm("Delete","User",new { id = item.Id },FormMethod.Post,new { onsubmit="return confirm('are you sure')" }))
+                    {
+                        @Html.AntiForgeryToken();
+                        <input type="submit" value="Delete" />
+                    }*@
+                </td>
         </tr>
 }
     </tbody>
