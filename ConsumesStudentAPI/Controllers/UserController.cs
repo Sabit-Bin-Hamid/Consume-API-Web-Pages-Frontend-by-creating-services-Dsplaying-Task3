@@ -105,15 +105,21 @@ namespace ConsumesStudentAPI.Controllers
         
         public IActionResult Delete(Guid id)
         {
-            //HTTP DELETE
-            var deleteTask = client.DeleteAsync(client.BaseAddress+"/User/"+id);
-            deleteTask.Wait();
-            var response=deleteTask.Result;
-            if (response.IsSuccessStatusCode)
+            try
             {
+                //HTTP DELETE
+                var deleteTask = client.DeleteAsync(client.BaseAddress + "/User/" + id);
+                deleteTask.Wait();
+                var response = deleteTask.Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
                 return RedirectToAction("Index");
+            }catch(Exception ex)
+            {
+                throw ex;
             }
-            return RedirectToAction("Index");
         }
     }
 }
